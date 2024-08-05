@@ -1,0 +1,21 @@
+<div>
+    <div class="container">
+        <form class="form " (ngSubmit)="SubmitPhone()" #myForm="ngForm">
+            <h1 class="title">Empolyee Data</h1>
+            <input placeholder="Enter your first name" class="input" type="tel" id="firstName" [(ngModel)]="form.firstName" name="firstName" #firstName="ngModel" required/>
+            <input placeholder="Enter your last name" class="input" type="text" id="lastName" [(ngModel)]="form.lastName" name="lastName" #firstName="ngModel" required/>
+            <input placeholder="Enter your email" class="input" type="text" id="email" [(ngModel)]="form.email" name="email" #firstName="ngModel" required/>
+            <input placeholder="Enter your phone number" class="input" type="tel" id="phoneNumber" [(ngModel)]="form.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required/>
+            <textarea placeholder="Enter your Address" class="input" type="text" id="address" [(ngModel)]="form.address" name="address" #address="ngModel" required></textarea>  
+            <select class="dropdown" [(ngModel)]="form.position" name="position" #position="ngModel">
+                <option value="" disabled selected>Select the position</option>
+                <option value="Manager">Manager</option>
+                <option value="Developer">Developer</option>
+                <option value="Designer">Designer</option>
+                <option value="HR">HR</option>
+            </select>
+            <input type="date" class="calender" [(ngModel)]="form.dateOfJoining" name="dateOfJoining" #dateOfJoining="ngModel"/>
+            <button class="button" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
