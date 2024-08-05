@@ -1,21 +1,142 @@
 <div>
     <div class="container">
-        <form class="form " (ngSubmit)="SubmitPhone()" #myForm="ngForm">
-            <h1 class="title">Empolyee Data</h1>
-            <input placeholder="Enter your first name" class="input" type="tel" id="firstName" [(ngModel)]="form.firstName" name="firstName" #firstName="ngModel" required/>
-            <input placeholder="Enter your last name" class="input" type="text" id="lastName" [(ngModel)]="form.lastName" name="lastName" #firstName="ngModel" required/>
-            <input placeholder="Enter your email" class="input" type="text" id="email" [(ngModel)]="form.email" name="email" #firstName="ngModel" required/>
-            <input placeholder="Enter your phone number" class="input" type="tel" id="phoneNumber" [(ngModel)]="form.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required/>
-            <textarea placeholder="Enter your Address" class="input" type="text" id="address" [(ngModel)]="form.address" name="address" #address="ngModel" required></textarea>  
-            <select class="dropdown" [(ngModel)]="form.position" name="position" #position="ngModel">
-                <option value="" disabled selected>Select the position</option>
-                <option value="Manager">Manager</option>
-                <option value="Developer">Developer</option>
-                <option value="Designer">Designer</option>
-                <option value="HR">HR</option>
-            </select>
-            <input type="date" class="calender" [(ngModel)]="form.dateOfJoining" name="dateOfJoining" #dateOfJoining="ngModel"/>
-            <button class="button" type="submit">Submit</button>
-        </form>
+      <form class="form" (ngSubmit)="onSubmit()" #myForm="ngForm">
+        <h1 class="title">Employee Data</h1>
+  
+        <input
+          placeholder="Enter your first name"
+          class="input"
+          type="text"
+          id="firstName"
+          [(ngModel)]="form.firstName"
+          name="firstName"
+          #firstName="ngModel"
+          required
+          minlength="2"
+        />
+        <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="error">
+          <div *ngIf="firstName.errors?.['required']">First Name is required.</div>
+          <div *ngIf="firstName.errors?.['minlength']">First Name must be at least 2 characters long.</div>
+        </div>
+  
+        <input
+          placeholder="Enter your last name"
+          class="input"
+          type="text"
+          id="lastName"
+          [(ngModel)]="form.lastName"
+          name="lastName"
+          #lastName="ngModel"
+          required
+          minlength="2"
+        />
+        <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="error">
+          <div *ngIf="lastName.errors?.['required']">Last Name is required.</div>
+          <div *ngIf="lastName.errors?.['minlength']">Last Name must be at least 2 characters long.</div>
+        </div>
+  
+        <input
+          placeholder="Enter your email"
+          class="input"
+          type="email"
+          id="email"
+          [(ngModel)]="form.email"
+          name="email"
+          #email="ngModel"
+          required
+        />
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+          <div *ngIf="email.errors?.['required']">Email is required.</div>
+          <div *ngIf="email.errors?.['email']">Invalid email address.</div>
+        </div>
+  
+        <input
+          placeholder="Enter your phone number"
+          class="input"
+          type="tel"
+          id="phoneNumber"
+          [(ngModel)]="form.phoneNumber"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+          required
+          pattern="^[0-9]+$"
+        />
+        <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="error">
+          <div *ngIf="phoneNumber.errors?.['required']">Phone Number is required.</div>
+          <div *ngIf="phoneNumber.errors?.['pattern']">Phone Number must be numeric.</div>
+        </div>
+  
+        <textarea
+          placeholder="Enter your Address"
+          class="input"
+          id="address"
+          [(ngModel)]="form.address"
+          name="address"
+          #address="ngModel"
+          required
+        ></textarea>
+        <div *ngIf="address.invalid && (address.dirty || address.touched)" class="error">
+          <div *ngIf="address.errors?.['required']">Address is required.</div>
+        </div>
+  
+        <select
+          class="dropdown"
+          [(ngModel)]="form.position"
+          name="position"
+          #position="ngModel"
+          required
+        >
+          <option value="" disabled selected>Select the position</option>
+          <option value="Manager">Manager</option>
+          <option value="Developer">Developer</option>
+          <option value="Designer">Designer</option>
+          <option value="HR">HR</option>
+        </select>
+        <div *ngIf="position.invalid && (position.dirty || position.touched)" class="error">
+          <div *ngIf="position.errors?.['required']">Position is required.</div>
+        </div>
+  
+        <input
+          type="date"
+          class="calender"
+          [(ngModel)]="form.dateOfJoining"
+          name="dateOfJoining"
+          #dateOfJoining="ngModel"
+          required
+        />
+        <div *ngIf="dateOfJoining.invalid && (dateOfJoining.dirty || dateOfJoining.touched)" class="error">
+          <div *ngIf="dateOfJoining.errors?.['required']">Date of Joining is required.</div>
+        </div>
+  
+        <button class="button" type="submit" [disabled]="myForm.invalid">Submit</button>
+      </form>
     </div>
-</div>
+    <div *ngIf="filledform" class="table-container">
+        <h2 class="subtitle">Submitted Data</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Address</th>
+              <th>Position</th>
+              <th>Date of Joining</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>{{ form.firstName }}</td>
+                <td>{{ form.lastName }}</td>
+                <td>{{ form.email }}</td>
+                <td>{{ form.phoneNumber }}</td>
+                <td>{{ form.address }}</td>
+                <td>{{ form.position }}</td>
+                <td>{{ form.dateOfJoining }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  

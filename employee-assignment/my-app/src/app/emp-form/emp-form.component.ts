@@ -17,13 +17,16 @@ export class EmpFormComponent {
     dateOfJoining: new Date()
     } 
   
+  filledform = false
    constructor(){
    }
    
    ngOnInit():void{}
   
-   SubmitPhone(){
-    console.log(this.form)
-   }
+   onSubmit(): void {
+      console.log(this.form);
+      this.filledform = true
+  }   
+
   
 }
