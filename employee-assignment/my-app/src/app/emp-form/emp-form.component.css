@@ -79,3 +79,8 @@
   .subtitle{
     text-align: center;
   }
+  @media (max-width: 768px) {
+    .tableDiv {
+      overflow-x: auto;
+    }
+  }
