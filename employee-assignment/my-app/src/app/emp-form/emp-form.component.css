@@ -29,7 +29,7 @@
     border: 1px solid #94a3b8;
     padding: 8px;
     width: 75%;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 .button {
     background-color: #60a5fa;
@@ -42,12 +42,12 @@
 .dropdown{
     border: 1px solid #718096; 
     padding: 0.8rem; 
-    margin: 1rem 0rem;
+    margin: 10px 0;
     width: 77%; 
   }
 .calender{  
   border: 1px solid #6b7280; 
   width: 74%; 
   padding: 0.8rem; 
-  margin: 1rem 0rem; 
+  margin: 10px 0;
 }

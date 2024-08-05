@@ -4,11 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmpFormComponent } from './emp-form/emp-form.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmpFormComponent
+    EmpFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

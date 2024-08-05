@@ -1,0 +1,6 @@
+<header class="header" [ngStyle]="{ 'background-color': getBackgroundColor() }">
+    <select class="dropdown" [(ngModel)]="selectedClient" name="client" #position="ngModel">
+        <option value="" disabled selected>Select the client</option>
+        <option *ngFor="let co of clients" [value]="co">{{co}}</option>
+    </select>
+</header>
